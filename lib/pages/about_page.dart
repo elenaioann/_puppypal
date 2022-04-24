@@ -1,3 +1,5 @@
+//general app info
+
 import 'package:flutter/material.dart';
 import '../Widgets/nav_bar.dart';
 import '../Widgets/colors.dart' as color;

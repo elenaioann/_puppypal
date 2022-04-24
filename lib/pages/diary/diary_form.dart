@@ -1,3 +1,4 @@
+//this page determines the look and functionality of a new diary entry
 import 'package:flutter/material.dart';
 import '../../Widgets/colors.dart' as color;
 
@@ -12,6 +13,7 @@ class DiaryForm extends StatelessWidget {
   final ValueChanged<String> onChangedDescription;
 
   const DiaryForm({
+    //the values of the diary input form
     Key? key,
     this.isEssential = false,
     this.number = 0,
@@ -22,6 +24,7 @@ class DiaryForm extends StatelessWidget {
     required this.onChangedDescription,
   }) : super(key: key);
 
+  //look and style
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
         child: Padding(
@@ -38,6 +41,7 @@ class DiaryForm extends StatelessWidget {
         ),
       );
 
+  //title of new note
   Widget buildTitle() => TextFormField(
         maxLines: 1,
         initialValue: title,
@@ -56,6 +60,7 @@ class DiaryForm extends StatelessWidget {
         onChanged: onChangedTitle,
       );
 
+  //main text input
   Widget buildDescription() => TextFormField(
         maxLines: 5,
         initialValue: description,

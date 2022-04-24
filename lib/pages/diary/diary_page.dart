@@ -1,3 +1,4 @@
+//page that displays the first page of the diary
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:puppy_pal/pages/diary/diary.dart';
@@ -31,6 +32,7 @@ class _DiaryPageState extends State<DiaryPage> {
     super.dispose();
   }
 
+  //refreshes the state of the diary so new/modified/deleted notes can be shown accordingly
   Future refreshDiary() async {
     setState(() => isLoading = true);
 
@@ -39,6 +41,7 @@ class _DiaryPageState extends State<DiaryPage> {
     setState(() => isLoading = false);
   }
 
+  //visual representation of screen
   @override
   Widget build(BuildContext context) => Scaffold(
         drawer: const NavBar(),
@@ -71,26 +74,33 @@ class _DiaryPageState extends State<DiaryPage> {
         ),
       );
 
+  //determines how notes are shown
   Widget buildDiary() => StaggeredGridView.countBuilder(
         padding: const EdgeInsets.all(8),
         itemCount: notes.length,
-        staggeredTileBuilder: (index) => const StaggeredTile.fit(2),
-        crossAxisCount: 4,
-        mainAxisSpacing: 4,
-        crossAxisSpacing: 4,
+        staggeredTileBuilder: (index) => const StaggeredTile.fit(
+            2), //creates the tiled effect of the notes which is 2 horizontally
+        crossAxisCount: 4, //number of children in cross axis
+        mainAxisSpacing: 4, //number of pixels between children on the main axis
+        crossAxisSpacing:
+            4, //number of pixels between children on the cross axis
         itemBuilder: (context, index) {
           final diary = notes[index];
 
           return GestureDetector(
+            //widget to detect a gesture
             onTap: () async {
+              //when tapped creates asynchronous function
               await Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => DiaryDetailPage(diaryId: diary.id!),
+                  builder: (context) => DiaryDetailPage(
+                      diaryId: diary.id!), //gets the id of the entry selected
                 ),
               );
               refreshDiary();
             },
-            child: DiaryCard(diary: diary, index: index),
+            child: DiaryCard(
+                diary: diary, index: index), //displays the card and data inside
           );
         },
       );

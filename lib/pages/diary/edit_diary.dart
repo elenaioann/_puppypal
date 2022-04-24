@@ -1,3 +1,4 @@
+//edit notes page
 import 'package:flutter/material.dart';
 import 'package:puppy_pal/pages/diary/diary.dart';
 import 'package:puppy_pal/pages/diary/diary_form.dart';
@@ -26,12 +27,15 @@ class _EditDiaryState extends State<EditDiary> {
   @override
   void initState() {
     super.initState();
-    isEssential = widget.diary?.isEssential ?? false;
-    number = widget.diary?.number ?? 0;
+    isEssential = widget.diary?.isEssential ??
+        false; //isEssential is equal to widget.diary.isEssential. If widget.diary.isEssential is null, then isEssential = false.
+    number = widget.diary?.number ??
+        0; //number is equal to widget.diary.number(potentially null). if widget.diary number is null, number = 0
     title = widget.diary?.title ?? '';
     description = widget.diary?.description ?? '';
   }
 
+  //display look of the edit screen
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(

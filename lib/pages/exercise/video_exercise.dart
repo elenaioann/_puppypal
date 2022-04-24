@@ -1,3 +1,5 @@
+//second page of video player
+
 // ignore_for_file: deprecated_member_use
 
 import 'dart:convert';
@@ -22,22 +24,26 @@ class _VideoExerciseState extends State<VideoExercise> {
   bool _disposed = false;
   VideoPlayerController? _controller;
 
+//initialise data
   _initData() async {
     await DefaultAssetBundle.of(context)
-        .loadString("json/videoinfo.json")
+        .loadString("json/videoinfo.json") //load the data from json file
         .then((value) {
       setState(() {
-        videoInfo = json.decode(value);
+        videoInfo = json.decode(
+            value); //parses the string and returns the resulting json object
       });
     });
   }
 
+//initialise object
   @override
   void initState() {
     super.initState();
     _initData();
   }
 
+//remove data
   @override
   void dispose() {
     _disposed = true;
@@ -47,6 +53,7 @@ class _VideoExerciseState extends State<VideoExercise> {
     super.dispose();
   }
 
+//display of the page
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +74,8 @@ class _VideoExerciseState extends State<VideoExercise> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _playArea == false
+            _playArea ==
+                    false //if no video is playing, the page looks as follows
                 ? Container(
                     padding:
                         const EdgeInsets.only(top: 60, left: 30, right: 30),
@@ -119,6 +127,7 @@ class _VideoExerciseState extends State<VideoExercise> {
                     ),
                   )
                 : Column(
+                    //if _playarea is true the page looks as follows
                     children: [
                       Container(
                         height: 100,
@@ -130,6 +139,7 @@ class _VideoExerciseState extends State<VideoExercise> {
                         child: Row(
                           children: [
                             InkWell(
+                              //detects tap gesture
                               onTap: () {
                                 Get.to(() => const ExercisePage());
                               },
@@ -217,6 +227,7 @@ class _VideoExerciseState extends State<VideoExercise> {
                 _onClickVideo(index);
               } else {
                 Get.snackbar(
+                  //when video's back button is pressed a message is shown
                   "Video",
                   "",
                   snackPosition: SnackPosition.BOTTOM,
@@ -268,6 +279,7 @@ class _VideoExerciseState extends State<VideoExercise> {
                 _onClickVideo(index);
               } else {
                 Get.snackbar(
+                  //if next video button is pressed, message is shown
                   "Video",
                   "",
                   snackPosition: SnackPosition.BOTTOM,

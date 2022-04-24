@@ -1,4 +1,7 @@
-const String diaryNotes = 'diary';
+//new model for diary
+//turning the data into json format
+
+const String diaryNotes = 'diary'; //name of table
 
 class DiaryFields {
   static final List<String> values = [
@@ -10,6 +13,7 @@ class DiaryFields {
     time,
   ];
 
+  //will be used as column names for the db
   static const String id = '_id';
   static const String isEssential = 'isEssential';
   static const String number = 'number';
@@ -19,7 +23,7 @@ class DiaryFields {
 }
 
 class Diary {
-  //data we want stored in the db
+  //data we want stored in the database
   final int? id;
   final bool isEssential;
   final int number;
@@ -36,6 +40,8 @@ class Diary {
     required this.creationTime,
   });
 
+//copy method to create a copy of the current object
+//this shows the values we want to modify
   Diary copy({
     int? id,
     bool? isEssential,
@@ -63,9 +69,12 @@ class Diary {
       );
 
   Map<String, Object?> toJson() => {
+        //convert data to json
+        //map of key/value pairs
         DiaryFields.id: id,
         DiaryFields.title: title,
-        DiaryFields.isEssential: isEssential ? 1 : 0,
+        //special cases like boolean and DayTime need to be converted
+        DiaryFields.isEssential: isEssential ? 1 : 0, //if true=1, else false=0
         DiaryFields.number: number,
         DiaryFields.description: description,
         DiaryFields.time: creationTime.toIso8601String(),

@@ -1,3 +1,4 @@
+//the first page of the exercise components
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:puppy_pal/pages/exercise/video_exercise.dart';
@@ -15,7 +16,8 @@ class _ExercisePageState extends State<ExercisePage> {
   List info = [];
 
   _initData() async {
-    await DefaultAssetBundle.of(context)
+    await DefaultAssetBundle.of(
+            context) //default asset bundle of the data later used for displaying videos
         .loadString("json/info.json")
         .then((value) {
       setState(() {
@@ -30,11 +32,12 @@ class _ExercisePageState extends State<ExercisePage> {
     _initData();
   }
 
+//Page display design
   @override
   Widget build(BuildContext context) => Scaffold(
         drawer: const NavBar(),
         appBar: AppBar(
-          title: const Text('Exercise with Puppy'),
+          title: const Text('Exercise with Puppy'), //top title in app bar
           centerTitle: true,
           backgroundColor: color.AppColor.navbarColour,
         ),
@@ -52,22 +55,27 @@ class _ExercisePageState extends State<ExercisePage> {
           child: Column(
             children: [
               Container(
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context)
+                    .size
+                    .width, //uses higher level view of the current available size
                 height: 200,
                 margin: const EdgeInsets.only(
+                  //margin
                   top: 30,
                   left: 20,
                   right: 20,
                 ),
                 decoration: BoxDecoration(
+                  //creates box
                   gradient: LinearGradient(
+                    //linear gradient added
                     colors: [
                       color.AppColor.boxColor1.withOpacity(0.9),
                       color.AppColor.boxColor2.withOpacity(0.75),
-                      Colors.white
+                      Colors.white //with 3 colours
                     ],
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.topRight,
+                    begin: Alignment.bottomLeft, //start
+                    end: Alignment.topRight, //end of gradient
                   ),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(15),
@@ -81,6 +89,7 @@ class _ExercisePageState extends State<ExercisePage> {
                   ],
                 ),
                 child: Stack(
+                  //creates a stacked layout for components
                   children: [
                     Container(
                       height: 200,
@@ -90,6 +99,7 @@ class _ExercisePageState extends State<ExercisePage> {
                       ),
                       decoration: const BoxDecoration(
                         image: DecorationImage(
+                          //image shown in decoration box
                           image: AssetImage(
                             "assets/Images/puppyworkout.png",
                           ),
@@ -136,12 +146,14 @@ class _ExercisePageState extends State<ExercisePage> {
                               top: 10,
                             ),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(60),
+                              borderRadius:
+                                  BorderRadius.circular(60), //circular edges
                               boxShadow: [
                                 BoxShadow(
+                                  //shadow added in box decoration
                                   color: color.AppColor.boxColor1,
                                   blurRadius: 20,
-                                  offset: const Offset(10, 3),
+                                  offset: const Offset(10, 3), //shadow's offset
                                 ),
                               ],
                             ),
@@ -179,12 +191,15 @@ class _ExercisePageState extends State<ExercisePage> {
                 ),
               ),
               Expanded(
+                  //expanded widget for using for all available space on main axis
                   child: ListView.builder(
-                itemCount: info.length,
+                //scrollable array
+                itemCount: info.length, //data from info.json file
                 itemBuilder: (_, i) {
                   return Column(
                     children: [
                       InkWell(
+                        //area that responds to tap gestures
                         onTap: () {
                           Get.to(() => const VideoExercise());
                         },
@@ -207,7 +222,8 @@ class _ExercisePageState extends State<ExercisePage> {
                             image: DecorationImage(
                               alignment: Alignment.centerLeft,
                               image: AssetImage(
-                                info[i]['img'],
+                                info[i][
+                                    'img'], //from the array json file, it uses the images according to their key/value pair
                               ),
                             ),
                             boxShadow: [
@@ -223,7 +239,8 @@ class _ExercisePageState extends State<ExercisePage> {
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                info[i]['title'],
+                                info[i][
+                                    'title'], //from the json file uses the values t display the title for each component
                                 style: TextStyle(
                                   fontSize: 25,
                                   fontWeight: FontWeight.w400,

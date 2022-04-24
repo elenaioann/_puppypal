@@ -1,3 +1,4 @@
+//displays a calming exercise
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../Widgets/nav_bar.dart';
@@ -16,6 +17,7 @@ class _CalmPageState extends State<CalmPage> {
   bool pressedStart = false;
   bool pressedStop = false;
 
+  //display page
   @override
   Widget build(BuildContext context) => Scaffold(
         drawer: const NavBar(),
@@ -65,9 +67,11 @@ class _CalmPageState extends State<CalmPage> {
         ),
       );
 
-  void resetTimer() => setState(() => seconds = maxSeconds);
+  void resetTimer() =>
+      setState(() => seconds = maxSeconds); //resets the timer button
 
   void startCountdown() {
+    //timer
     timer = Timer.periodic(
         const Duration(
           seconds: 1, //milliseconds: 50, //faster testing
@@ -92,7 +96,7 @@ class _CalmPageState extends State<CalmPage> {
 
   void stopCountdown({bool reset = true}) {
     if (reset) {
-      resetTimer();
+      resetTimer(); //if reset is true, the countdown timer takes its initial value
     }
     //stop timer
     timer?.cancel();
@@ -118,6 +122,7 @@ class _CalmPageState extends State<CalmPage> {
   }
 
   Widget buildTimer() => SizedBox(
+        //creates the circular effect of the countdown timer
         width: 100,
         height: 100,
         child: Stack(
