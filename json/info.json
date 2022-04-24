@@ -1,0 +1,18 @@
+[
+    {
+      "title": "Jumping Jacks",
+      "img": "assets/Images/jumping-jack.png"
+    },
+    {
+      "title": "Crunches",
+      "img": "assets/Images/crunches.png"
+    },
+    {
+      "title": "Marching",
+      "img": "assets/Images/marching.png"
+    },
+    {
+      "title": "Squats",
+      "img": "assets/Images/squat.png"
+    }
+  ]

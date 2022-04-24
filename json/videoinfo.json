@@ -1,0 +1,27 @@
+[
+    {
+      "title": "Jumping Jacks",
+      "time": "47 seconds",
+      "thumbnail": "assets/Images/jumping-jack.png",
+      "videoUrl": "https://drive.google.com/uc?id=1qjkrocnd7dQ9W9miDWUaaksvvr4olqhx&export=download"
+    },
+    {
+      "title": "Crunches",
+      "time": "84 seconds",
+      "thumbnail": "assets/Images/crunches.png",
+      "videoUrl": "https://drive.google.com/uc?id=1WREmdf8gDU_bq3pTX337C3NRfp8n0Kl-&export=download"
+    },
+    {
+      "title": "Marching",
+      "time": "50 seconds",
+      "thumbnail": "assets/Images/marching.png",
+      "videoUrl": "https://drive.google.com/uc?id=1hA2rlonycAPKRnxy_Kh5mHuq2mThKzLQ&export=download"
+    },
+    {
+      "title": "Squats",
+      "time": "67 seconds",
+      "thumbnail": "assets/Images/squat.png",
+      "videoUrl": "https://drive.google.com/uc?id=1VHGFg4G_qL-zCYhkKEwl-8zBBD6k7l3w&export=download"
+    }
+  
+  ]
